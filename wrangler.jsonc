@@ -1,0 +1,19 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "tiendanaturista",
+  "main": "@astrojs/cloudflare/entrypoints/server",
+  "account_id": "b2891466588d2b3ed3c7c9abb2217380",
+  "compatibility_date": "2026-09-05",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "tiendanaturista",
+      "database_id": "67dba91d-0e0d-4759-884c-0eb5acfcc041",
+      "migrations_dir": "migrations"
+    }
+  ]
+}
