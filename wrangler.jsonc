@@ -2,7 +2,7 @@
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "tiendanaturista",
   "main": "@astrojs/cloudflare/entrypoints/server",
-  "account_id": "b2891466588d2b3ed3c7c9abb2217380",
+  "account_id": "f5736df8884faf65ff781dce7eb07751",
   "compatibility_date": "2026-09-05",
   "assets": {
     "directory": "./dist",
