@@ -12,7 +12,7 @@
     {
       "binding": "DB",
       "database_name": "tiendanaturista",
-      "database_id": "67dba91d-0e0d-4759-884c-0eb5acfcc041",
+      "database_id": "d6ccf70a-43da-4d28-88f5-b80c42116ec0",
       "migrations_dir": "migrations"
     }
   ]
