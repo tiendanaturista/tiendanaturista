@@ -1,0 +1,35 @@
+---
+import { formatoCOP, whatsappLink } from '../data/site';
+
+interface Props {
+  nombre: string;
+  categoria: string;
+  emoji: string;
+  descripcion: string;
+  precio: number;
+  precioAnterior?: number | null;
+}
+
+const { nombre, categoria, emoji, descripcion, precio, precioAnterior } = Astro.props;
+const descuento = precioAnterior
+  ? Math.round(((precioAnterior - precio) / precioAnterior) * 100)
+  : 0;
+const enlace = whatsappLink(`Hola, quiero pedir: ${nombre} (${formatoCOP(precio)})`);
+---
+
+<article class="tarjeta">
+  {descuento > 0 && <span class="etiqueta-oferta">-{descuento}%</span>}
+  <div class="tarjeta__imagen" aria-hidden="true">{emoji}</div>
+  <div class="tarjeta__cuerpo">
+    <span class="tarjeta__categoria">{categoria}</span>
+    <h3>{nombre}</h3>
+    <p class="tarjeta__desc">{descripcion}</p>
+    <div class="precio">
+      <strong>{formatoCOP(precio)}</strong>
+      {precioAnterior && <s>{formatoCOP(precioAnterior)}</s>}
+    </div>
+    <a class="btn btn--whatsapp btn--block" href={enlace} target="_blank" rel="noopener">
+      Pedir por WhatsApp
+    </a>
+  </div>
+</article>

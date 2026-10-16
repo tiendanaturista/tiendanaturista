@@ -1,0 +1,104 @@
+---
+import { pwaInfo } from 'virtual:pwa-info';
+import { SITE, whatsappLink } from '../data/site';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description = SITE.description } = Astro.props;
+const pageTitle = title ? `${title} | ${SITE.name}` : `${SITE.name} | Productos naturales en oferta`;
+// La URL canónica siempre apunta al dominio principal (.com), incluso si entran por .co
+const canonical = new URL(Astro.url.pathname, SITE.url).href;
+
+// Datos estructurados: ayudan a Google a asociar el sitio con @tiendanaturista
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: SITE.name,
+  alternateName: SITE.handle,
+  url: SITE.url,
+  logo: `${SITE.url}/icons/icon-512.png`,
+  email: SITE.email,
+  sameAs: SITE.redes.map((r) => r.url),
+};
+---
+
+<!doctype html>
+<html lang="es-CO">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta name="theme-color" content={SITE.themeColor} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={`${SITE.url}/icons/icon-512.png`} />
+    <meta property="og:locale" content="es_CO" />
+
+    {SITE.googleSiteVerification && (
+      <meta name="google-site-verification" content={SITE.googleSiteVerification} />
+    )}
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    {pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
+  </head>
+  <body>
+    <header class="header">
+      <div class="contenedor header__fila">
+        <a class="marca" href="/">
+          <img src="/favicon.svg" alt="" width="36" height="36" />
+          <span>{SITE.name}</span>
+        </a>
+        <nav class="nav" aria-label="Principal">
+          <a href="/#ofertas">Ofertas</a>
+          <a href="/#contacto">Contacto</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="footer">
+      <div class="contenedor">
+        <p class="footer__aviso">
+          Los productos naturales son un complemento y no reemplazan un tratamiento médico.
+          Consulta a tu médico antes de usarlos, especialmente si estás embarazada, en
+          lactancia o tomas medicamentos.
+        </p>
+        <p>
+          © {new Date().getFullYear()} {SITE.name} ·
+          <a href={whatsappLink('Hola, quiero más información')}>WhatsApp</a> ·
+          <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+        </p>
+        <p>
+          Síguenos <strong>@{SITE.handle}</strong>:
+          {SITE.redes.map((r, i) => (
+            <>
+              {i > 0 && ' · '}
+              <a href={r.url} target="_blank" rel="noopener me">{r.nombre}</a>
+            </>
+          ))}
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      import { registerSW } from 'virtual:pwa-register';
+      registerSW({ immediate: true });
+    </script>
+  </body>
+</html>

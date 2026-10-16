@@ -1,0 +1,74 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProductCard from '../components/ProductCard.astro';
+import productos from '../data/productos.json';
+import { whatsappLink } from '../data/site';
+---
+
+<Layout>
+  <section class="hero">
+    <div class="contenedor hero__grid">
+      <div>
+        <h1>Bienestar natural, al mejor precio</h1>
+        <p>
+          Suplementos, infusiones, aceites y superalimentos seleccionados. Mira las ofertas
+          y haz tu pedido directo por WhatsApp.
+        </p>
+        <div class="hero__acciones">
+          <a class="btn" href="#ofertas">Ver ofertas</a>
+          <a class="btn btn--claro" href={whatsappLink('Hola, quiero hacer un pedido')} target="_blank" rel="noopener">
+            Escríbenos
+          </a>
+        </div>
+      </div>
+      <div class="hero__arte" aria-hidden="true">🌿</div>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor beneficios">
+      <div class="beneficio">
+        <span aria-hidden="true">🌱</span>
+        <h3>Productos naturales</h3>
+        <p>Selección cuidada para tu día a día.</p>
+      </div>
+      <div class="beneficio">
+        <span aria-hidden="true">💬</span>
+        <h3>Pedido por WhatsApp</h3>
+        <p>Atención directa, rápida y sin registros.</p>
+      </div>
+      <div class="beneficio">
+        <span aria-hidden="true">🚚</span>
+        <h3>Envíos a todo el país</h3>
+        <p>Confirma tiempos y costos al hacer tu pedido.</p>
+      </div>
+      <div class="beneficio">
+        <span aria-hidden="true">📱</span>
+        <h3>Instálala en tu celular</h3>
+        <p>Funciona como app y abre incluso con mala señal.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion" id="ofertas">
+    <div class="contenedor">
+      <h2>Ofertas de la semana</h2>
+      <p class="seccion__sub">Precios en pesos colombianos (COP).</p>
+      <div class="grid-productos">
+        {productos.map((p) => <ProductCard {...p} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion" id="contacto">
+    <div class="contenedor">
+      <div class="contacto">
+        <h2>¿Dudas o quieres algo especial?</h2>
+        <p>Cuéntanos qué necesitas y te asesoramos por WhatsApp.</p>
+        <a class="btn btn--whatsapp" href={whatsappLink('Hola, tengo una consulta')} target="_blank" rel="noopener">
+          Hablar por WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

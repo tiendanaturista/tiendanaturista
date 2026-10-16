@@ -1,0 +1,56 @@
+[
+  {
+    "id": "curcuma-capsulas",
+    "nombre": "Cúrcuma en cápsulas",
+    "categoria": "Suplementos",
+    "emoji": "🟡",
+    "descripcion": "Frasco x 60 cápsulas. Producto de ejemplo, reemplázalo por el real.",
+    "precio": 32000,
+    "precioAnterior": 40000
+  },
+  {
+    "id": "te-verde",
+    "nombre": "Té verde orgánico",
+    "categoria": "Infusiones",
+    "emoji": "🍵",
+    "descripcion": "Caja x 25 sobres. Producto de ejemplo, reemplázalo por el real.",
+    "precio": 14500,
+    "precioAnterior": null
+  },
+  {
+    "id": "aceite-coco",
+    "nombre": "Aceite de coco virgen",
+    "categoria": "Aceites",
+    "emoji": "🥥",
+    "descripcion": "Frasco x 500 ml. Producto de ejemplo, reemplázalo por el real.",
+    "precio": 27900,
+    "precioAnterior": 33000
+  },
+  {
+    "id": "moringa-polvo",
+    "nombre": "Moringa en polvo",
+    "categoria": "Superalimentos",
+    "emoji": "🌿",
+    "descripcion": "Bolsa x 250 g. Producto de ejemplo, reemplázalo por el real.",
+    "precio": 24000,
+    "precioAnterior": null
+  },
+  {
+    "id": "espirulina",
+    "nombre": "Espirulina en tabletas",
+    "categoria": "Superalimentos",
+    "emoji": "💚",
+    "descripcion": "Frasco x 100 tabletas. Producto de ejemplo, reemplázalo por el real.",
+    "precio": 29500,
+    "precioAnterior": 35000
+  },
+  {
+    "id": "miel-abejas",
+    "nombre": "Miel de abejas pura",
+    "categoria": "Alimentos",
+    "emoji": "🍯",
+    "descripcion": "Frasco x 350 g. Producto de ejemplo, reemplázalo por el real.",
+    "precio": 18000,
+    "precioAnterior": null
+  }
+]
